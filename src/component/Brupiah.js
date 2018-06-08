@@ -13,11 +13,11 @@ class Brupiah extends Component {
 
   onSeriesInputChange = e =>{
     this.setState({ masuk:e.target.value});
-    axios.get(`https://blockchain.info/tobtc?currency=USD&value=${e.target.value*14000}`)
+    axios.get(`https://blockchain.info/tobtc?currency=USD&value=${e.target.value}`)
     .then((ambilData) => {  
       console.log(ambilData);
       this.setState({
-        hasil: ambilData.data,
+        hasil: (this.state.masuk*14000)/ambilData.data,
         })
         
      })
